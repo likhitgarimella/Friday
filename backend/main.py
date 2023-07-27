@@ -42,4 +42,11 @@ app.add_middleware(
 @app.get("/health")
 async def check_health():
     print("hello")
-    return {"message": "Hello Likhit"}
+    return {"message": "healthy"}
+
+
+# # Post Bot Response
+# # Note: Not playing in browser when using post request
+# @app.post("/post-audio/")
+# async def post_audio(file: UploadFile = File(...)):
+#     print("audio")

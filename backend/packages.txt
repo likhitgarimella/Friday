@@ -4,3 +4,5 @@ node
 npm
 yarn
 ts-node
+venv
+openai

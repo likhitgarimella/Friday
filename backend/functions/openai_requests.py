@@ -16,3 +16,6 @@ def convert_audio_to_text(audio_file):
     except Exception as e:
         print(e)
         return
+
+# Open AI - ChatGPT
+# Get response to our message

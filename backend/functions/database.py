@@ -45,4 +45,3 @@ def get_recent_messages():
 
     # Return messages
     return messages
-

@@ -9,7 +9,7 @@ from decouple import config #allows to bring in variables from .env setup sectio
 import openai
 
 # Custom Function Imports
-from functions.openai_requests import convert_audio_to_text
+from functions.openai_requests import convert_audio_to_text, get_chat_response
 
 # Initiate App
 app = FastAPI()
@@ -48,7 +48,16 @@ async def get_audio():
 
     # Decode audio
     message_decoded = convert_audio_to_text(audio_input)
-    print(message_decoded)
+    # print(message_decoded)
+
+    # Guard: Ensure message decoded
+    if not message_decoded:
+        return HTTPException(status_code=400, detail="Failed to decode audio")
+    
+    # Get ChatGPT Response
+    chat_response = get_chat_response(message_decoded)
+
+    print(chat_response)
 
     return "Done"
 

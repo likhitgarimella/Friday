@@ -47,6 +47,21 @@ def get_recent_messages():
     return messages1
 
 # Store Messages
-def store_messages():
+def store_messages(request_message, response_message):
 
-    pass
+    # Define the file name
+    file_name = "stored_data.json"
+
+    # Get recent messages
+    messages = get_recent_messages()[1:]
+    # Exclude the first message that's added into the list ("learn_instruction")
+
+    # Add messages to data
+    user_message = {"role": "user", "content": request_message}
+    assistant_message = {"role": "assistant", "content": response_message}
+    messages.append(user_message)
+    messages.append(assistant_message) # Most recent message
+
+    # Save the updated file
+    with open(file_name, "w") as f:
+        json.dump(messages, f)

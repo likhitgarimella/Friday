@@ -31,7 +31,7 @@ def convert_text_to_speech(message):
     
     # Handle Response
     if response.status_code == 200:
-        # returns audio file we want
+        # Returns audio file we want
         return response.content
     else:
         return

@@ -9,7 +9,7 @@ from decouple import config #allows to bring in variables from .env setup sectio
 import openai
 
 # Custom Function Imports
-from functions.database import store_messages
+from functions.database import store_messages, reset_messages
 from functions.openai_requests import convert_audio_to_text, get_chat_response
 
 # Initiate App
@@ -37,8 +37,15 @@ app.add_middleware(
 # Check Health
 @app.get("/health")
 async def check_health():
-    print("hello")
+    print("hello world")
     return {"message": "healthy"}
+
+# Reset Messages
+@app.get("/reset")
+async def reset_conversation():
+    reset_messages()
+    print("Reset Messages")
+    return {"message": "conversation reset"}
 
 # Get audio
 @app.get("/post-audio-get/")

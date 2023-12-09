@@ -11,12 +11,35 @@ function Controller() {
     const handleStop = async () => {};
     
     return (
-        <div className="h-screen overflow-y-hidden">
+        <div style={{
+            height: "100vh",
+            overflowY: "hidden"
+            }}>
             <Title setMessages={setMessages} />
-            <div className="flex flex-col justify-between h-full overflow-y-scroll pb-96">
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%",
+                overflowY: "scroll",
+                paddingBottom: "96px"
+                }}>
                 {/* Recorder */}
-                <div className="fixed bottom-0 w-full py-6 border-t text-center bg-gradient-to-r from-sky-500 to-green-500">
-                    <div className="flex justify-center items-center w-full">
+                <div style={{
+                    position: "fixed",
+                    bottom: "0",
+                    width: "100%",
+                    padding: "1.5rem",
+                    borderTop: "1px solid #ccc",
+                    textAlign: "center",
+                    background: "linear-gradient(to right, #00c2e0, #4CAF50)"
+                    }}>
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "100%"
+                        }}>
                         <div>Recorder</div>
                     </div>
                 </div>

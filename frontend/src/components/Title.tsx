@@ -41,7 +41,9 @@ function Title({ setMessages }: Props) {
         color: "#ffffff",
         fontSize: "16px",
         fontWeight: "bold",
-        fontStyle: "italic"}}>
+        fontStyle: "italic",
+        fontFamily: "Futura"
+        }}>
         {/* <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold shadow"></div> */}
             <div>F.R.I.D.A.Y.</div>
 
@@ -67,7 +69,7 @@ function Title({ setMessages }: Props) {
                     style={{
                         transition: "stroke 300ms",
                         width: "1rem",
-                        height: "1rem",
+                        height: "1rem"
                       }}
                 >
                     <path

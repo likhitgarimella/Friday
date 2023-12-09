@@ -9,6 +9,7 @@ type Props = {
 // Title
 function Title({ setMessages }: Props) {
     const [isResetting, setIsResetting] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     
     // Reset the conversation
     const resetConversation = async () => {
@@ -30,16 +31,32 @@ function Title({ setMessages }: Props) {
         setIsResetting(false);
     };
 
-    return (
-        <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold shadow">
-            <div className="italic">Friday</div>
+    return (        
+        <div style={{display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        padding: "8px",
+        backgroundColor: "#1a202c",
+        color: "#ffffff",
+        fontSize: "16px",
+        fontWeight: "bold",
+        fontStyle: "italic"}}>
+        {/* <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold shadow"></div> */}
+            <div>F.R.I.D.A.Y.</div>
 
             <button
                 onClick={resetConversation}
-                className={
-                    "transition-all duration-300 text-blue-300 hover:text-pink-500 " +
-                    (isResetting && "animate-pulse")
-                }
+                style={{
+                    transition: "all 300ms",
+                    color: isHovered ? "#fuchsia" : "#3b82f6", // pink-500 : blue-300
+                    cursor: "pointer",
+                    fontWeight: "normal",
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className={isResetting ? "animate-pulse" : ""}
+                // className={"transition-all duration-300 text-blue-300 hover:text-pink-500 " + (isResetting && "animate-pulse")}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +64,11 @@ function Title({ setMessages }: Props) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    style={{
+                        transition: "stroke 300ms",
+                        width: "1rem",
+                        height: "1rem",
+                      }}
                 >
                     <path
                         strokeLinecap="round"
@@ -58,7 +79,6 @@ function Title({ setMessages }: Props) {
             </button>
         </div>
     );
-
-}
+};
 
 export default Title;

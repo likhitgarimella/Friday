@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Title from "./Title";
+import RecordMessage from "./RecordMessage";
 
 function Controller() {
 
@@ -40,7 +41,7 @@ function Controller() {
                         alignItems: "center",
                         width: "100%"
                         }}>
-                        <div>Recorder</div>
+                        <RecordMessage handleStop={handleStop}/>
                     </div>
                 </div>
             </div>

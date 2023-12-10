@@ -1,6 +1,7 @@
 import {useState} from "react";
 import Title from "./Title";
 import RecordMessage from "./RecordMessage";
+import axios from "axios";
 
 function Controller() {
 
@@ -14,11 +15,10 @@ function Controller() {
     };
 
     const handleStop = async (blobUrl: string) => {
-        console.log(blobUrl)
         setIsLoading(true)
 
         // Append recorded message to messages
-        const myMessage = { sender: "Me", blobUrl };
+        const myMessage = { sender: "me", blobUrl };
         const messagesArr = [...messages, myMessage];
 
         // Convert blob url to blob object => to send this to backend
@@ -30,11 +30,35 @@ function Controller() {
                 const formData = new FormData();
                 formData.append("file", blob, "myFile.wav");
 
+                // Send form data to API endpoint
+                await axios
+                    .post("http://localhost:8000/post-audio", formData, {
+                        headers: { "Content-Type": "audio/mpeg" },
+                        responseType: "arraybuffer",
+                    })
+                .then((res: any) => {
+                    const blob = res.data;
+                    const audio = new Audio();
+                    audio.src = createBlobUrl(blob);
+
+                    // Append to audio
+                    const fridayMessage = { sender: "friday", blobUrl: audio.src };
+                    messagesArr.push(fridayMessage);
+                    setMessages(messagesArr);
+
+                    // Play audio
+                    setIsLoading(false);
+                    audio.play();
+                })
+                .catch((err) => {
+                    alert(err.message);
+                    setIsLoading(false);
+                });
+
             });
 
-        setIsLoading(false)
     };
-    
+
     return (
         <div style={{
             height: "100vh",

@@ -19,9 +19,15 @@ function RecordMessage({ handleStop }: Props) {
                 <button
                     onMouseDown={startRecording}
                     onMouseUp={stopRecording}
-                    style={{ backgroundColor: "#ffffff", padding: "1rem", borderRadius: "50%" }}
+                    style={{ backgroundColor: "#ffffff", padding: "0.5rem", borderRadius: "50%" }}
                 >
-                    ICON
+                    <RecordIcon
+                        classText={
+                            status == "recording"
+                                ? "#ef4444" // Red
+                                : "#00c2e0" // Blue
+                        }
+                    />
                 </button>
                 <p style={{ marginTop: "0.5rem", color: "#ffffff", fontWeight: "lighter" }}>{status}</p>
             </div>
@@ -30,4 +36,4 @@ function RecordMessage({ handleStop }: Props) {
   );
 }
 
-export default RecordMessage
+export default RecordMessage;

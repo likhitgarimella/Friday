@@ -9,7 +9,9 @@ function Controller() {
 
     const createBlobUrl = (data: any) => {};
 
-    const handleStop = async () => {};
+    const handleStop = async () => {
+        alert("Recorded");
+    };
     
     return (
         <div style={{
@@ -33,7 +35,7 @@ function Controller() {
                     padding: "1.5rem",
                     borderTop: "1px solid #ccc",
                     textAlign: "center",
-                    background: "linear-gradient(to right, #00c2e0, #4CAF50)"
+                    background: "linear-gradient(to right, #00c2e0, #4caf50)"
                     }}>
                     <div style={{
                         display: "flex",

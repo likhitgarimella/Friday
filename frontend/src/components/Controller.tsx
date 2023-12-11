@@ -32,7 +32,7 @@ function Controller() {
 
                 // Send form data to API endpoint
                 await axios
-                    .post("http://localhost:8000/post-audio", formData, {
+                    .post("http://localhost:8000/post-audio-get/", formData, {
                         headers: { "Content-Type": "audio/mpeg" },
                         responseType: "arraybuffer",
                     })

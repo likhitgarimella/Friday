@@ -19,11 +19,11 @@ app = FastAPI()
 # CORS: Cross-Origin Resource Sharing
 # CORS - Origins
 origins = [
-    "http://localhost:5173/",
-    "http://localhost:5174/",
-    "http://localhost:4173/",
-    "http://localhost:4174/",
-    "http://localhost:3000/"
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:4173",
+    "http://localhost:4174",
+    "http://localhost:3000"
 ]
 
 # CORS - Middleware
@@ -38,7 +38,7 @@ app.add_middleware(
 # Check Health
 @app.get("/health")
 async def check_health():
-    print("hello world")
+    print("Hello World")
     return {"message": "healthy"}
 
 # Reset Messages
@@ -64,7 +64,7 @@ async def post_audio(file: UploadFile = File(...)):
 
     # Decode audio
     message_decoded = convert_audio_to_text(audio_input)
-    # print(message_decoded)
+    print("MY DECODED AUDIO: ", message_decoded)
 
     # Guard: Ensure message decoded
     if not message_decoded:
@@ -81,7 +81,7 @@ async def post_audio(file: UploadFile = File(...)):
     store_messages(message_decoded, chat_response)
     # message_decoded is our msg we send to chatgpt, chat_response is chatgpt's response
 
-    print(chat_response)
+    print("FRIDAY'S CHAT RESPONSE: ", chat_response)
 
     # Convert chat response to audio
     audio_output = convert_text_to_speech(chat_response)
@@ -93,7 +93,7 @@ async def post_audio(file: UploadFile = File(...)):
     # Create a generator that yields chunks of data
     def iterfile():
         yield audio_output
-    
+
     # Return audio file
     return StreamingResponse(iterfile(), media_type="application/octet-stream")
 

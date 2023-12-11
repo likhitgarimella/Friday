@@ -1,5 +1,14 @@
-# uvicorn main:app
+# Backend
+# Dev
 # uvicorn main:app --reload
+# Deploy
+# uvicorn main:app
+
+# Frontend
+# Dev
+# yarn dev
+# Deploy
+# yarn start --> did not work
 
 # Main Imports
 from fastapi import FastAPI, File, UploadFile, HTTPException

@@ -73,6 +73,49 @@ function Controller() {
                 overflowY: "scroll",
                 paddingBottom: "96px"
                 }}>
+
+                {/* Conversation */}
+                <div style={{
+                    marginTop: '1.25rem',
+                    paddingLeft: '1.25rem',
+                    paddingRight: '1.25rem'
+                }}>
+                    {messages.map((audio, index) => { // iterate through every message
+                        // iterate through every index 0,1,2,3... for every audio message
+                        return (                            
+                            <div
+                                key={index + audio.sender}
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    ...(audio.sender == 'friday' && { alignItems: 'flex-end' })
+                                }}
+                            >
+
+                                {/* Sender */}
+                                <div style={{marginTop: '0rem'}}>
+                                    <p style={{
+                                        textAlign: audio.sender == "friday" ? 'right' : 'left',
+                                        marginRight: audio.sender == "friday" ? '1rem' : '0',
+                                        marginLeft: audio.sender == "me" ? '1rem' : '0',
+                                        fontStyle: 'italic',
+                                        color: audio.sender == "friday" ? 'green' : 'blue',
+                                    }}>
+                                        {audio.sender}
+                                    </p>
+
+                                    {/* Audio Message */}
+                                    <audio
+                                        src = {audio.blobUrl}
+                                        style={{appearance: 'none'}}
+                                        controls
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
                 {/* Recorder */}
                 <div style={{
                     position: "fixed",

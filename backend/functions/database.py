@@ -63,8 +63,8 @@ def store_messages(request_message, response_message):
     messages.append(assistant_message) # Most recent message
 
     # Save the updated file
-    with open(file_name, "w") as f:
-        json.dump(messages, f)
+    with open(file_name, "w") as json_file:
+        json.dump(messages, json_file, indent=2)
 
 # Reset Messages
 def reset_messages():

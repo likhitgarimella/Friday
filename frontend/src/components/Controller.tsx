@@ -48,7 +48,13 @@ function Controller() {
 
                     // Play audio
                     setIsLoading(false);
-                    audio.play();
+                    audio.play()
+                        .then(() => {
+                            console.log("Audio playback successful");
+                        })
+                        .catch((error) => {
+                            console.error("Audio playback error:", error);
+                        });
                 })
                 .catch((err) => {
                     alert(err.message);
@@ -114,6 +120,28 @@ function Controller() {
                             </div>
                         );
                     })}
+
+                    {messages.length == 0 && !isLoading && (
+                        <div style = {{
+                            textAlign: 'center',
+                            fontWeight: 'lighter',
+                            fontStyle: 'italic',
+                            marginTop: '2.5rem'
+                        }}>
+                            Send Friday a message...
+                        </div>
+                    )}
+
+                    {isLoading && (
+                        <div style = {{
+                            textAlign: 'center',
+                            fontWeight: 'lighter',
+                            fontStyle: 'italic',
+                            marginTop: '2.5rem'
+                        }}>
+                            Gimme a few seconds...
+                        </div>
+                    )}
                 </div>
 
                 {/* Recorder */}

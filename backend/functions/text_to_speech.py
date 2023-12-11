@@ -20,12 +20,13 @@ def convert_text_to_speech(message):
     voice_friday = "21m00Tcm4TlvDq8ikWAM"
 
     # Constructing headers & endpoint
-    headers = {"xi-api-key": ELEVEN_LABS_API_KEY, "Content-Type": "application/json", "accept": "audio/mpeg"}
+    headers = {"xi-api-key": ELEVEN_LABS_API_KEY, "Content-Type": "application/json", "Accept": "audio/mpeg"}
     endpoint = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_friday}"
 
     # Send request
     try:
         response = requests.post(endpoint, json=body, headers=headers)
+        print("RESPONSE", response)
     except Exception as e:
         return
     
